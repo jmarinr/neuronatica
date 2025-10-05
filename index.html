@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,19 +16,23 @@
             background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #0a1628 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
         
         /* Partículas animadas de fondo mejoradas */
         .particles {
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
             overflow: hidden;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
         
         .particle {
@@ -82,6 +85,7 @@
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: grid-move 10s linear infinite;
+            z-index: 0;
         }
         
         @keyframes grid-move {
@@ -89,12 +93,13 @@
             100% { transform: translate(50px, 50px); }
         }
         
-        .container {
+        .main-container {
             text-align: center;
             z-index: 10;
             padding: 20px;
             max-width: 900px;
             width: 100%;
+            position: relative;
         }
         
         /* Logo section mejorada */
@@ -282,7 +287,7 @@
         /* Mensaje principal mejorado */
         .message {
             animation: fadeInUp 1s ease-out 0.6s both;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         
         h1 {
@@ -316,55 +321,64 @@
             font-weight: 300;
         }
         
-        /* Botón de notificación mejorado */
-        .notify-section {
+        /* Secciones preview */
+        .sections-preview {
             animation: fadeInUp 1s ease-out 0.9s both;
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .notify-btn {
-            display: inline-block;
-            padding: 18px 45px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
+        .sections-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .sections-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .section-item {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
             font-size: 16px;
-            font-weight: 500;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            cursor: not-allowed;
+            opacity: 0.7;
             position: relative;
             overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         
-        .notify-btn::before {
-            content: '';
+        .section-item::before {
+            content: '🔒';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            top: -5px;
+            right: -5px;
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 10px;
         }
         
-        .notify-btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .notify-btn:hover {
+        .section-item:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+            opacity: 0.85;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         /* Footer mejorado */
         .footer {
-            position: absolute;
+            position: fixed;
             bottom: 30px;
             left: 0;
             right: 0;
@@ -373,11 +387,38 @@
             font-size: 14px;
             animation: fadeIn 1s ease-out 1.2s both;
             letter-spacing: 1px;
+            z-index: 10;
         }
         
         .footer .year {
             color: #60a5fa;
             font-weight: 500;
+        }
+        
+        /* Loading bar */
+        .loading-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22c55e, #fbbf24, #ef4444);
+            animation: loading 2s ease-in-out infinite;
+            z-index: 100;
+        }
+        
+        @keyframes loading {
+            0% {
+                width: 0;
+                left: 0;
+            }
+            50% {
+                width: 100%;
+                left: 0;
+            }
+            100% {
+                width: 0;
+                left: 100%;
+            }
         }
         
         /* Animaciones */
@@ -444,30 +485,14 @@
             p {
                 font-size: 16px;
             }
-        }
-        
-        /* Loading animation */
-        .loading-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #22c55e, #fbbf24, #ef4444);
-            animation: loading 2s ease-in-out infinite;
-        }
-        
-        @keyframes loading {
-            0% {
-                width: 0;
-                left: 0;
+            
+            .sections-list {
+                gap: 15px;
             }
-            50% {
-                width: 100%;
-                left: 0;
-            }
-            100% {
-                width: 0;
-                left: 100%;
+            
+            .section-item {
+                padding: 12px 20px;
+                font-size: 14px;
             }
         }
     </style>
@@ -476,7 +501,7 @@
     <!-- Partículas animadas -->
     <div class="particles" id="particles"></div>
     
-    <div class="container">
+    <div class="main-container">
         <!-- Logo con colores personalizados -->
         <div class="logo-container">
             <div class="logo">
@@ -552,15 +577,15 @@
         <div class="countdown-container">
             <div class="countdown">
                 <div class="countdown-item">
-                    <span class="countdown-number" id="days">15</span>
+                    <span class="countdown-number" id="days">00</span>
                     <span class="countdown-label">Días</span>
                 </div>
                 <div class="countdown-item">
-                    <span class="countdown-number" id="hours">12</span>
+                    <span class="countdown-number" id="hours">00</span>
                     <span class="countdown-label">Horas</span>
                 </div>
                 <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">45</span>
+                    <span class="countdown-number" id="minutes">00</span>
                     <span class="countdown-label">Minutos</span>
                 </div>
                 <div class="countdown-item">
@@ -579,11 +604,15 @@
             </p>
         </div>
         
-        <!-- Botón de notificación -->
-        <div class="notify-section">
-            <button class="notify-btn" onclick="handleNotify()">
-                Notifícame del lanzamiento
-            </button>
+        <!-- Preview de secciones -->
+        <div class="sections-preview">
+            <h2 class="sections-title">Descubre lo que viene</h2>
+            <div class="sections-list">
+                <div class="section-item">Nuestro Propósito</div>
+                <div class="section-item">Productos</div>
+                <div class="section-item">Investigación</div>
+                <div class="section-item">Contacto</div>
+            </div>
         </div>
         
         <!-- Loading bar -->
@@ -611,15 +640,14 @@
             }
         }
         
-        // Configuración del contador regresivo
+        // Configuración del contador regresivo REAL - 1 de Noviembre 2025
         function initCountdown() {
-            // Establecer la fecha objetivo
-            const now = new Date().getTime();
-            const targetDate = now + (15 * 24 * 60 * 60 * 1000) + (12 * 60 * 60 * 1000) + (45 * 60 * 1000);
+            // Fecha objetivo fija: 1 de noviembre de 2025, 00:00:00
+            const targetDate = new Date('2025-11-01T00:00:00').getTime();
             
             function updateCountdown() {
-                const currentTime = new Date().getTime();
-                const distance = targetDate - currentTime;
+                const now = new Date().getTime();
+                const distance = targetDate - now;
                 
                 if (distance > 0) {
                     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -633,6 +661,7 @@
                     animateNumber('minutes', minutes);
                     animateNumber('seconds', seconds);
                 } else {
+                    // Si el contador llega a cero
                     document.querySelector('.countdown-container').innerHTML = 
                         '<h2 style="color: #60a5fa; font-size: 36px;">¡Ya estamos en línea! 🚀</h2>';
                 }
@@ -652,22 +681,9 @@
                 }
             }
             
+            // Actualizar inmediatamente y luego cada segundo
             updateCountdown();
             setInterval(updateCountdown, 1000);
-        }
-        
-        // Manejar notificación
-        function handleNotify() {
-            const btn = document.querySelector('.notify-btn');
-            btn.innerHTML = '¡Gracias! Te avisaremos pronto ✓';
-            btn.style.background = 'linear-gradient(135deg, #22c55e, #10b981)';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = 'Notifícame del lanzamiento';
-                btn.style.background = 'linear-gradient(135deg, #3b82f6, #8b5cf6)';
-                btn.disabled = false;
-            }, 3000);
         }
         
         // Efecto parallax mejorado
@@ -675,15 +691,40 @@
             const x = (e.clientX / window.innerWidth - 0.5) * 2;
             const y = (e.clientY / window.innerHeight - 0.5) * 2;
             
-            document.querySelector('.logo-container').style.transform = 
-                `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateZ(20px)`;
+            const logoContainer = document.querySelector('.logo-container');
+            if (logoContainer) {
+                logoContainer.style.transform = 
+                    `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateZ(20px)`;
+            }
         });
         
-        // Inicializar
+        // Mostrar tooltip al hacer hover en las secciones
+        document.querySelectorAll('.section-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Crear efecto de shake cuando intentan hacer clic
+                this.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 500);
+            });
+        });
+        
+        // Animación de shake
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Inicializar cuando la página cargue
         window.addEventListener('load', () => {
             createParticles();
             initCountdown();
         });
     </script>
 </body>
-</html> 
+</html>
