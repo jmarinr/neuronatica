@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -9,1003 +10,1159 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* Responsive - Video section */
+            .video-container {
+                margin: 0 10px;
+            }
+
+```
+        .video-caption {
+            font-size: 14px;
+            padding: 0 20px;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #0a1628 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            overflow-x: hidden;
-            position: relative;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #0a1628 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    /* Partículas animadas de fondo mejoradas */
+    .particles {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: float-up 15s infinite linear;
+    }
+    
+    .particle:nth-child(odd) {
+        background: rgba(34, 197, 94, 0.15);
+        width: 3px;
+        height: 3px;
+    }
+    
+    .particle:nth-child(3n) {
+        background: rgba(250, 204, 21, 0.15);
+        animation-duration: 20s;
+    }
+    
+    @keyframes float-up {
+        0% {
+            transform: translateY(100vh) translateX(0);
+            opacity: 0;
         }
-        
-        /* Partículas animadas de fondo mejoradas */
-        .particles {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            top: 0;
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) translateX(100px);
+            opacity: 0;
+        }
+    }
+    
+    /* Grid de fondo */
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: grid-move 10s linear infinite;
+        z-index: 0;
+    }
+    
+    @keyframes grid-move {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(50px, 50px); }
+    }
+    
+    .main-container {
+        text-align: center;
+        z-index: 10;
+        padding: 20px;
+        max-width: 900px;
+        width: 100%;
+        position: relative;
+    }
+    
+    /* Logo section mejorada */
+    .logo-container {
+        margin-bottom: 60px;
+        animation: fadeInDown 1s ease-out;
+        position: relative;
+    }
+    
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 18px;
+        font-size: 48px;
+        font-weight: 500;
+        letter-spacing: -1px;
+        color: white;
+        position: relative;
+    }
+    
+    /* Estilo del ícono del timón */
+    .logo-icon {
+        width: 55px;
+        height: 55px;
+        position: relative;
+    }
+    
+    .logo-icon svg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+    
+    /* Animación del timón */
+    @keyframes rotate-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .logo-icon svg {
+        animation: rotate-slow 30s linear infinite;
+    }
+    
+    /* Texto del logo con colores personalizados */
+    .logo-text {
+        position: relative;
+        display: inline-block;
+        font-weight: 400;
+    }
+    
+    .logo-text .letter {
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    
+    /* Colores específicos para las letras */
+    .logo-text .letter-n { color: white; }
+    .logo-text .letter-e { color: white; }
+    .logo-text .letter-u { color: white; }
+    .logo-text .letter-r { 
+        color: #22c55e;
+        animation: pulse-green 2s infinite;
+    }
+    .logo-text .letter-o { color: white; }
+    .logo-text .letter-n2 { color: white; }
+    .logo-text .letter-a1 { color: white; }
+    .logo-text .letter-t { 
+        color: #fbbf24;
+        animation: pulse-yellow 2s infinite 0.5s;
+    }
+    .logo-text .letter-i { color: white; }
+    .logo-text .letter-c { color: white; }
+    .logo-text .letter-a2 { 
+        color: #ef4444;
+        animation: pulse-red 2s infinite 1s;
+    }
+    
+    @keyframes pulse-green {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; text-shadow: 0 0 10px #22c55e; }
+    }
+    
+    @keyframes pulse-yellow {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; text-shadow: 0 0 10px #fbbf24; }
+    }
+    
+    @keyframes pulse-red {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; text-shadow: 0 0 10px #ef4444; }
+    }
+    
+    /* Hover effect en las letras */
+    .logo-text .letter:hover {
+        transform: translateY(-5px) scale(1.1);
+    }
+    
+    /* Contador regresivo mejorado */
+    .countdown-container {
+        margin-bottom: 50px;
+        animation: fadeInUp 1s ease-out 0.3s both;
+    }
+    
+    .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        padding: 25px 20px;
+        min-width: 110px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .countdown-item::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: all 0.5s;
+        opacity: 0;
+    }
+    
+    .countdown-item:hover::before {
+        animation: shine 0.5s ease-in-out;
+    }
+    
+    @keyframes shine {
+        0% {
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+            opacity: 0;
+        }
+    }
+    
+    .countdown-item:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .countdown-item:nth-child(1) { border-top: 2px solid #22c55e; }
+    .countdown-item:nth-child(2) { border-top: 2px solid #fbbf24; }
+    .countdown-item:nth-child(3) { border-top: 2px solid #3b82f6; }
+    .countdown-item:nth-child(4) { border-top: 2px solid #ef4444; }
+    
+    .countdown-number {
+        font-size: 52px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: block;
+        line-height: 1;
+        margin-bottom: 10px;
+    }
+    
+    .countdown-label {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        opacity: 0.7;
+        font-weight: 500;
+    }
+    
+    /* Mensaje principal mejorado */
+    .message {
+        animation: fadeInUp 1s ease-out 0.6s both;
+        margin-bottom: 50px;
+    }
+    
+    h1 {
+        font-size: 32px;
+        font-weight: 300;
+        margin-bottom: 25px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #60a5fa, #22c55e, #fbbf24, #ef4444);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% auto;
+        animation: gradient-shift 3s ease infinite;
+    }
+    
+    @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    p {
+        font-size: 19px;
+        line-height: 1.7;
+        opacity: 0.85;
+        margin-bottom: 40px;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: 300;
+    }
+    
+    /* Video Section */
+    .video-section {
+        animation: fadeInUp 1s ease-out 0.7s both;
+        margin: 50px 0;
+        padding: 0 20px;
+    }
+    
+    .video-container {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .video-container::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #60a5fa, #a78bfa, #22c55e, #fbbf24, #ef4444);
+        border-radius: 20px;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.3s ease;
+        animation: gradient-shift 3s ease infinite;
+    }
+    
+    .video-container:hover::before {
+        opacity: 0.6;
+    }
+    
+    .video-container iframe,
+    .video-container video {
+        width: 100%;
+        aspect-ratio: 16/9;
+        display: block;
+    }
+    
+    .play-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        opacity: 0;
+    }
+    
+    .video-container:hover .play-overlay {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    
+    .video-caption {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+        opacity: 0.8;
+        font-style: italic;
+        letter-spacing: 1px;
+    }
+    
+    /* Modal para video fullscreen */
+    .video-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 22, 40, 0.95);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    .video-modal.active {
+        display: flex;
+    }
+    
+    .modal-content {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 36px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .close-modal:hover {
+        color: #60a5fa;
+        transform: rotate(90deg);
+    }
+    
+    /* Secciones preview */
+    .sections-preview {
+        animation: fadeInUp 1s ease-out 0.9s both;
+        margin-top: 60px;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .sections-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+        font-weight: 300;
+        letter-spacing: 2px;
+    }
+    
+    .sections-list {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    
+    .section-item {
+        padding: 15px 30px;
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        cursor: not-allowed;
+        opacity: 0.7;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .section-item::before {
+        content: '🔒';
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        font-size: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 10px;
+    }
+    
+    .section-item:hover {
+        transform: translateY(-3px);
+        opacity: 0.85;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Footer mejorado */
+    .footer {
+        position: fixed;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        opacity: 0.7;
+        font-size: 14px;
+        animation: fadeIn 1s ease-out 1.2s both;
+        letter-spacing: 1px;
+        z-index: 10;
+    }
+    
+    .footer .year {
+        color: #60a5fa;
+        font-weight: 500;
+    }
+    
+    /* Loading bar */
+    .loading-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #22c55e, #fbbf24, #ef4444);
+        animation: loading 2s ease-in-out infinite;
+        z-index: 100;
+    }
+    
+    @keyframes loading {
+        0% {
+            width: 0;
             left: 0;
-            z-index: 1;
         }
-        
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float-up 15s infinite linear;
-        }
-        
-        .particle:nth-child(odd) {
-            background: rgba(34, 197, 94, 0.15);
-            width: 3px;
-            height: 3px;
-        }
-        
-        .particle:nth-child(3n) {
-            background: rgba(250, 204, 21, 0.15);
-            animation-duration: 20s;
-        }
-        
-        @keyframes float-up {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-        
-        /* Grid de fondo */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        50% {
             width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: grid-move 10s linear infinite;
-            z-index: 0;
+            left: 0;
         }
-        
-        @keyframes grid-move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        100% {
+            width: 0;
+            left: 100%;
         }
-        
+    }
+    
+    /* Animaciones */
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    /* Responsive - Tablets */
+    @media (max-width: 1024px) {
         .main-container {
-            text-align: center;
-            z-index: 10;
             padding: 20px;
-            max-width: 900px;
-            width: 100%;
-            position: relative;
-        }
-        
-        /* Logo section mejorada */
-        .logo-container {
-            margin-bottom: 60px;
-            animation: fadeInDown 1s ease-out;
-            position: relative;
+            max-width: 90%;
         }
         
         .logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 18px;
-            font-size: 48px;
-            font-weight: 500;
-            letter-spacing: -1px;
-            color: white;
-            position: relative;
+            font-size: 42px;
+            gap: 16px;
         }
         
-        /* Estilo del ícono del timón */
         .logo-icon {
-            width: 55px;
-            height: 55px;
-            position: relative;
-        }
-        
-        .logo-icon svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
-        }
-        
-        /* Animación del timón */
-        @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .logo-icon svg {
-            animation: rotate-slow 30s linear infinite;
-        }
-        
-        /* Texto del logo con colores personalizados */
-        .logo-text {
-            position: relative;
-            display: inline-block;
-            font-weight: 400;
-        }
-        
-        .logo-text .letter {
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-        
-        /* Colores específicos para las letras */
-        .logo-text .letter-n { color: white; }
-        .logo-text .letter-e { color: white; }
-        .logo-text .letter-u { color: white; }
-        .logo-text .letter-r { 
-            color: #22c55e;
-            animation: pulse-green 2s infinite;
-        }
-        .logo-text .letter-o { color: white; }
-        .logo-text .letter-n2 { color: white; }
-        .logo-text .letter-a1 { color: white; }
-        .logo-text .letter-t { 
-            color: #fbbf24;
-            animation: pulse-yellow 2s infinite 0.5s;
-        }
-        .logo-text .letter-i { color: white; }
-        .logo-text .letter-c { color: white; }
-        .logo-text .letter-a2 { 
-            color: #ef4444;
-            animation: pulse-red 2s infinite 1s;
-        }
-        
-        @keyframes pulse-green {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; text-shadow: 0 0 10px #22c55e; }
-        }
-        
-        @keyframes pulse-yellow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; text-shadow: 0 0 10px #fbbf24; }
-        }
-        
-        @keyframes pulse-red {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; text-shadow: 0 0 10px #ef4444; }
-        }
-        
-        /* Hover effect en las letras */
-        .logo-text .letter:hover {
-            transform: translateY(-5px) scale(1.1);
-        }
-        
-        /* Contador regresivo mejorado */
-        .countdown-container {
-            margin-bottom: 50px;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-        
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
+            width: 50px;
+            height: 50px;
         }
         
         .countdown-item {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 25px 20px;
-            min-width: 110px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            min-width: 100px;
+            padding: 22px 18px;
         }
-        
-        .countdown-item::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s;
-            opacity: 0;
-        }
-        
-        .countdown-item:hover::before {
-            animation: shine 0.5s ease-in-out;
-        }
-        
-        @keyframes shine {
-            0% {
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-                opacity: 0;
-            }
-        }
-        
-        .countdown-item:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        .countdown-item:nth-child(1) { border-top: 2px solid #22c55e; }
-        .countdown-item:nth-child(2) { border-top: 2px solid #fbbf24; }
-        .countdown-item:nth-child(3) { border-top: 2px solid #3b82f6; }
-        .countdown-item:nth-child(4) { border-top: 2px solid #ef4444; }
         
         .countdown-number {
-            font-size: 52px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-        
-        .countdown-label {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            opacity: 0.7;
-            font-weight: 500;
-        }
-        
-        /* Mensaje principal mejorado */
-        .message {
-            animation: fadeInUp 1s ease-out 0.6s both;
-            margin-bottom: 50px;
+            font-size: 45px;
         }
         
         h1 {
-            font-size: 32px;
-            font-weight: 300;
-            margin-bottom: 25px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #60a5fa, #22c55e, #fbbf24, #ef4444);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: gradient-shift 3s ease infinite;
-        }
-        
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            font-size: 28px;
         }
         
         p {
-            font-size: 19px;
-            line-height: 1.7;
-            opacity: 0.85;
+            font-size: 18px;
+            padding: 0 20px;
+        }
+    }
+    
+    /* Responsive - Móviles grandes */
+    @media (max-width: 768px) {
+        body {
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .main-container {
+            padding: 15px;
+            max-width: 95%;
+        }
+        
+        .logo-container {
             margin-bottom: 40px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
         }
         
-        /* Secciones preview */
-        .sections-preview {
-            animation: fadeInUp 1s ease-out 0.9s both;
-            margin-top: 60px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .logo {
+            font-size: 32px;
+            gap: 12px;
+            flex-direction: column;
         }
         
-        .sections-title {
-            font-size: 24px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            font-weight: 300;
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+        
+        .countdown {
+            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .countdown-item {
+            min-width: auto;
+            padding: 20px 15px;
+        }
+        
+        .countdown-number {
+            font-size: 36px;
+        }
+        
+        .countdown-label {
+            font-size: 11px;
             letter-spacing: 2px;
         }
         
+        h1 {
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 16px;
+            padding: 0 10px;
+            line-height: 1.6;
+        }
+        
+        .sections-preview {
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+        
+        .sections-title {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+        
         .sections-list {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            gap: 12px;
+            flex-direction: column;
         }
         
         .section-item {
-            padding: 15px 30px;
-            background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            cursor: not-allowed;
-            opacity: 0.7;
-            position: relative;
-            overflow: hidden;
+            padding: 14px 25px;
+            font-size: 15px;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
         }
         
-        .section-item::before {
-            content: '🔒';
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            font-size: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2px 6px;
-            border-radius: 10px;
-        }
-        
-        .section-item:hover {
-            transform: translateY(-3px);
-            opacity: 0.85;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Footer mejorado */
         .footer {
-            position: fixed;
-            bottom: 30px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            opacity: 0.7;
-            font-size: 14px;
-            animation: fadeIn 1s ease-out 1.2s both;
+            position: relative;
+            bottom: auto;
+            margin-top: 40px;
+            padding: 20px;
+        }
+    }
+    
+    /* Responsive - Móviles pequeños */
+    @media (max-width: 480px) {
+        .main-container {
+            padding: 10px;
+        }
+        
+        .logo-container {
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 28px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-text .letter {
+            font-size: 28px;
+        }
+        
+        .countdown {
+            gap: 10px;
+        }
+        
+        .countdown-item {
+            padding: 18px 12px;
+            border-radius: 15px;
+        }
+        
+        .countdown-number {
+            font-size: 32px;
+        }
+        
+        .countdown-label {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+        }
+        
+        h1 {
+            font-size: 20px;
             letter-spacing: 1px;
-            z-index: 10;
         }
         
-        .footer .year {
-            color: #60a5fa;
-            font-weight: 500;
+        p {
+            font-size: 15px;
+            margin-bottom: 30px;
         }
         
-        /* Loading bar */
-        .loading-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #22c55e, #fbbf24, #ef4444);
-            animation: loading 2s ease-in-out infinite;
-            z-index: 100;
+        .sections-preview {
+            padding: 25px 15px;
+            border-radius: 20px;
         }
         
-        @keyframes loading {
-            0% {
-                width: 0;
-                left: 0;
-            }
-            50% {
-                width: 100%;
-                left: 0;
-            }
-            100% {
-                width: 0;
-                left: 100%;
-            }
+        .sections-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
         
-        /* Animaciones */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .section-item {
+            padding: 12px 20px;
+            font-size: 14px;
+            border-radius: 20px;
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .particles {
+            display: none; /* Ocultar partículas en móviles pequeños para mejorar rendimiento */
+        }
+    }
+    
+    /* Responsive - Móviles muy pequeños */
+    @media (max-width: 375px) {
+        .logo {
+            font-size: 24px;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .logo-icon {
+            width: 35px;
+            height: 35px;
         }
         
-        /* Responsive - Tablets */
-        @media (max-width: 1024px) {
-            .main-container {
-                padding: 20px;
-                max-width: 90%;
-            }
-            
-            .logo {
-                font-size: 42px;
-                gap: 16px;
-            }
-            
-            .logo-icon {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .countdown-item {
-                min-width: 100px;
-                padding: 22px 18px;
-            }
-            
-            .countdown-number {
-                font-size: 45px;
-            }
-            
-            h1 {
-                font-size: 28px;
-            }
-            
-            p {
-                font-size: 18px;
-                padding: 0 20px;
-            }
+        .countdown-item {
+            padding: 15px 10px;
         }
         
-        /* Responsive - Móviles grandes */
-        @media (max-width: 768px) {
-            body {
-                min-height: 100vh;
-                padding: 20px 0;
-            }
-            
-            .main-container {
-                padding: 15px;
-                max-width: 95%;
-            }
-            
-            .logo-container {
-                margin-bottom: 40px;
-            }
-            
-            .logo {
-                font-size: 32px;
-                gap: 12px;
-                flex-direction: column;
-            }
-            
-            .logo-icon {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .countdown {
-                gap: 12px;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .countdown-item {
-                min-width: auto;
-                padding: 20px 15px;
-            }
-            
-            .countdown-number {
-                font-size: 36px;
-            }
-            
-            .countdown-label {
-                font-size: 11px;
-                letter-spacing: 2px;
-            }
-            
-            h1 {
-                font-size: 24px;
-                letter-spacing: 2px;
-                margin-bottom: 20px;
-            }
-            
-            p {
-                font-size: 16px;
-                padding: 0 10px;
-                line-height: 1.6;
-            }
-            
-            .sections-preview {
-                padding: 30px 20px;
-                margin-top: 40px;
-            }
-            
-            .sections-title {
-                font-size: 20px;
-                margin-bottom: 25px;
-            }
-            
-            .sections-list {
-                gap: 12px;
-                flex-direction: column;
-            }
-            
-            .section-item {
-                padding: 14px 25px;
-                font-size: 15px;
-                width: 100%;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-            
-            .footer {
-                position: relative;
-                bottom: auto;
-                margin-top: 40px;
-                padding: 20px;
-            }
+        .countdown-number {
+            font-size: 28px;
         }
         
-        /* Responsive - Móviles pequeños */
-        @media (max-width: 480px) {
-            .main-container {
-                padding: 10px;
-            }
-            
-            .logo-container {
-                margin-bottom: 30px;
-            }
-            
-            .logo {
-                font-size: 28px;
-            }
-            
-            .logo-icon {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .logo-text .letter {
-                font-size: 28px;
-            }
-            
-            .countdown {
-                gap: 10px;
-            }
-            
-            .countdown-item {
-                padding: 18px 12px;
-                border-radius: 15px;
-            }
-            
-            .countdown-number {
-                font-size: 32px;
-            }
-            
-            .countdown-label {
-                font-size: 10px;
-                letter-spacing: 1.5px;
-            }
-            
-            h1 {
-                font-size: 20px;
-                letter-spacing: 1px;
-            }
-            
-            p {
-                font-size: 15px;
-                margin-bottom: 30px;
-            }
-            
-            .sections-preview {
-                padding: 25px 15px;
-                border-radius: 20px;
-            }
-            
-            .sections-title {
-                font-size: 18px;
-                margin-bottom: 20px;
-                letter-spacing: 1px;
-            }
-            
-            .section-item {
-                padding: 12px 20px;
-                font-size: 14px;
-                border-radius: 20px;
-            }
-            
-            .particles {
-                display: none; /* Ocultar partículas en móviles pequeños para mejorar rendimiento */
-            }
+        .countdown-label {
+            font-size: 9px;
         }
         
-        /* Responsive - Móviles muy pequeños */
-        @media (max-width: 375px) {
-            .logo {
-                font-size: 24px;
-            }
-            
-            .logo-icon {
-                width: 35px;
-                height: 35px;
-            }
-            
-            .countdown-item {
-                padding: 15px 10px;
-            }
-            
-            .countdown-number {
-                font-size: 28px;
-            }
-            
-            .countdown-label {
-                font-size: 9px;
-            }
-            
-            h1 {
-                font-size: 18px;
-            }
-            
-            p {
-                font-size: 14px;
-                line-height: 1.5;
-            }
-            
-            .section-item {
-                padding: 10px 18px;
-                font-size: 13px;
-            }
+        h1 {
+            font-size: 18px;
         }
         
-        /* Ajustes para pantallas muy grandes */
-        @media (min-width: 1440px) {
-            .main-container {
-                max-width: 1100px;
-            }
-            
-            .logo {
-                font-size: 56px;
-            }
-            
-            .logo-icon {
-                width: 65px;
-                height: 65px;
-            }
-            
-            .countdown-number {
-                font-size: 60px;
-            }
-            
-            h1 {
-                font-size: 36px;
-            }
-            
-            p {
-                font-size: 21px;
-            }
+        p {
+            font-size: 14px;
+            line-height: 1.5;
         }
         
-        /* Ajustes para modo landscape en móviles */
-        @media (max-height: 600px) and (orientation: landscape) {
-            body {
-                padding: 10px 0;
-            }
-            
-            .logo-container {
-                margin-bottom: 20px;
-            }
-            
-            .logo {
-                font-size: 24px;
-                flex-direction: row;
-            }
-            
-            .logo-icon {
-                width: 35px;
-                height: 35px;
-            }
-            
-            .countdown {
-                gap: 15px;
-                display: flex;
-            }
-            
-            .countdown-item {
-                padding: 15px 12px;
-                min-width: 90px;
-            }
-            
-            .countdown-number {
-                font-size: 28px;
-            }
-            
-            .message {
-                margin-bottom: 20px;
-            }
-            
-            h1 {
-                font-size: 20px;
-                margin-bottom: 15px;
-            }
-            
-            p {
-                font-size: 14px;
-                margin-bottom: 20px;
-            }
-            
-            .sections-preview {
-                padding: 20px;
-                margin-top: 20px;
-            }
-            
-            .sections-list {
-                flex-direction: row;
-            }
-            
-            .section-item {
-                padding: 10px 15px;
-                font-size: 12px;
-            }
+        .section-item {
+            padding: 10px 18px;
+            font-size: 13px;
         }
-    </style>
+    }
+    
+    /* Ajustes para pantallas muy grandes */
+    @media (min-width: 1440px) {
+        .main-container {
+            max-width: 1100px;
+        }
+        
+        .logo {
+            font-size: 56px;
+        }
+        
+        .logo-icon {
+            width: 65px;
+            height: 65px;
+        }
+        
+        .countdown-number {
+            font-size: 60px;
+        }
+        
+        h1 {
+            font-size: 36px;
+        }
+        
+        p {
+            font-size: 21px;
+        }
+    }
+    
+    /* Ajustes para modo landscape en móviles */
+    @media (max-height: 600px) and (orientation: landscape) {
+        body {
+            padding: 10px 0;
+        }
+        
+        .logo-container {
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            flex-direction: row;
+        }
+        
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .countdown {
+            gap: 15px;
+            display: flex;
+        }
+        
+        .countdown-item {
+            padding: 15px 12px;
+            min-width: 90px;
+        }
+        
+        .countdown-number {
+            font-size: 28px;
+        }
+        
+        .message {
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .sections-preview {
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .sections-list {
+            flex-direction: row;
+        }
+        
+        .section-item {
+            padding: 10px 15px;
+            font-size: 12px;
+        }
+    }
+</style>
+```
+
 </head>
 <body>
     <!-- Partículas animadas -->
     <div class="particles" id="particles"></div>
-    
-    <div class="main-container">
-        <!-- Logo con colores personalizados -->
-        <div class="logo-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#818cf8;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
-                            </linearGradient>
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        
-                        <!-- Círculo exterior con patrón de circuito -->
-                        <circle cx="25" cy="25" r="23" stroke="url(#techGradient)" stroke-width="1.5" fill="none" opacity="0.8"/>
-                        <circle cx="25" cy="25" r="20" stroke="url(#techGradient)" stroke-width="0.5" fill="none" stroke-dasharray="2 3" opacity="0.4"/>
-                        
-                        <!-- Centro neuronal -->
-                        <circle cx="25" cy="25" r="5" fill="url(#techGradient)" filter="url(#glow)"/>
-                        <circle cx="25" cy="25" r="3" fill="white" opacity="0.9"/>
-                        
-                        <!-- 8 radios como conexiones neuronales -->
-                        <g stroke="url(#techGradient)" stroke-width="1.8" stroke-linecap="round">
-                            <!-- Radios principales con nodos -->
-                            <line x1="25" y1="5" x2="25" y2="20"/>
-                            <line x1="25" y1="30" x2="25" y2="45"/>
-                            <line x1="5" y1="25" x2="20" y2="25"/>
-                            <line x1="30" y1="25" x2="45" y2="25"/>
-                            <!-- Radios diagonales -->
-                            <line x1="11" y1="11" x2="21" y2="21" opacity="0.7"/>
-                            <line x1="29" y1="29" x2="39" y2="39" opacity="0.7"/>
-                            <line x1="39" y1="11" x2="29" y2="21" opacity="0.7"/>
-                            <line x1="21" y1="29" x2="11" y2="39" opacity="0.7"/>
-                        </g>
-                        
-                        <!-- Nodos neuronales en los extremos -->
-                        <circle cx="25" cy="5" r="2.5" fill="url(#techGradient)" opacity="0.9"/>
-                        <circle cx="25" cy="45" r="2.5" fill="url(#techGradient)" opacity="0.9"/>
-                        <circle cx="5" cy="25" r="2.5" fill="url(#techGradient)" opacity="0.9"/>
-                        <circle cx="45" cy="25" r="2.5" fill="url(#techGradient)" opacity="0.9"/>
-                        
-                        <!-- Nodos diagonales más pequeños -->
-                        <circle cx="11" cy="11" r="1.5" fill="#60a5fa" opacity="0.6"/>
-                        <circle cx="39" cy="11" r="1.5" fill="#818cf8" opacity="0.6"/>
-                        <circle cx="11" cy="39" r="1.5" fill="#a78bfa" opacity="0.6"/>
-                        <circle cx="39" cy="39" r="1.5" fill="#60a5fa" opacity="0.6"/>
-                        
-                        <!-- Pulsos de datos (pequeños puntos) -->
-                        <circle cx="25" cy="12" r="0.8" fill="white" opacity="0.8">
-                            <animate attributeName="cy" values="5;20;5" dur="3s" repeatCount="indefinite"/>
-                            <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
-                        </circle>
-                        <circle cx="33" cy="25" r="0.8" fill="white" opacity="0.8">
-                            <animate attributeName="cx" values="30;45;30" dur="3.5s" repeatCount="indefinite"/>
-                            <animate attributeName="opacity" values="0;1;0" dur="3.5s" repeatCount="indefinite"/>
-                        </circle>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <span class="letter letter-n">n</span><span class="letter letter-e">e</span><span class="letter letter-u">u</span><span class="letter letter-r">r</span><span class="letter letter-o">o</span><span class="letter letter-n2">n</span><span class="letter letter-a1">a</span><span class="letter letter-t">t</span><span class="letter letter-i">i</span><span class="letter letter-c">c</span><span class="letter letter-a2">a</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Contador regresivo -->
-        <div class="countdown-container">
-            <div class="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">00</span>
-                    <span class="countdown-label">Días</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Horas</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutos</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Segundos</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mensaje -->
-        <div class="message">
-            <h1>Próximamente</h1>
-            <p>
-                Navegando hacia el futuro de la inteligencia artificial y el análisis de datos. 
-                Prepárate para una experiencia innovadora que transformará tu manera de trabajar con tecnología.
-            </p>
-        </div>
-        
-        <!-- Preview de secciones -->
-        <div class="sections-preview">
-            <h2 class="sections-title">Descubre lo que viene</h2>
-            <div class="sections-list">
-                <div class="section-item">Nuestro Propósito</div>
-                <div class="section-item">Productos</div>
-                <div class="section-item">Investigación</div>
-                <div class="section-item">Contacto</div>
-            </div>
-        </div>
-        
-        <!-- Loading bar -->
-        <div class="loading-bar"></div>
-    </div>
-    
-    <!-- Footer -->
-    <div class="footer">
-        © <span class="year">2025</span> Neuronatica. Innovación impulsada por datos.
-    </div>
-    
-    <script>
-        // Generar partículas
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Configuración del contador regresivo REAL - 1 de Noviembre 2025
-        function initCountdown() {
-            // Fecha objetivo fija: 1 de noviembre de 2025, 00:00:00
-            const targetDate = new Date('2025-11-01T00:00:00').getTime();
-            
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-                
-                if (distance > 0) {
-                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+```
+<div class="main-container">
+    <!-- Logo con colores personalizados -->
+    <div class="logo-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#818cf8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
                     
-                    // Actualizar con animación suave
-                    animateNumber('days', days);
-                    animateNumber('hours', hours);
-                    animateNumber('minutes', minutes);
-                    animateNumber('seconds', seconds);
-                } else {
-                    // Si el contador llega a cero
-                    document.querySelector('.countdown-container').innerHTML = 
-                        '<h2 style="color: #60a5fa; font-size: 36px;">¡Ya estamos en línea! 🚀</h2>';
-                }
-            }
+                    <!-- Círculo exterior con patrón de circuito -->
+                    <circle cx="25" cy="25" r="23" stroke="url(#techGradient)" stroke-width="1.5" fill="none" opacity="0.8"/>
+                    <circle cx="25" cy="25" r="20" stroke="url(#techGradient)" stroke-width="0.5" fill="none" stroke-dasharray="2 3" opacity="0.4"/>
+                    
+                    <!-- Centro neuronal -->
+                    <circle cx="25" cy="25" r="5" fill="url(#techGradient)" filter="url(#glow)"/>
+                    <circle cx="25" cy="25" r="3" fill="white" opacity="0.9"/>
+                    
+                    <!-- 8 radios como conexiones neuronales -->
+                    <g stroke="url(#techGradient)" stroke-width="1.8" stroke-linecap="round">
+                        <!-- Radios principales con nodos -->
+                        <line x1="25" y1="5" x2="25" y2="20"/>
+                        <line x1="25" y1="30" x2="25" y2="45"/>
+                        <line x1="5" y1="25" x2="20" y2="25"/>
+                        <line x1="30" y1="25" x2="45" y2="25"/>
+                        <!-- Radios diagonales -->
+                        <line x1="11" y1="11" x2="21" y2="21" opacity="0.7"/>
+                        <line x1="29" y1="29" x2="39" y2="39" opacity="0.7"/>
+                        <line x1="39" y1="11" x2="29" y2="21" opacity="0.7"/>
+                        <line x1="21" y1="29" x2="11" y2="39" opacity="0.7"/>
+                    </g>
+                    
+                    <!-- Nodos neuronales en los extremos -->
+                    <circle cx="25" cy="5" r="2.5" fill="url(#techGradient)" opacity="0.9"/>
+                    <circle cx="25" cy="45" r="2.5" fill="url(#techGradient)" opacity="0.9"/>
+                    <circle cx="5" cy="25" r="2.5" fill="url(#techGradient)" opacity="0.9"/>
+                    <circle cx="45" cy="25" r="2.5" fill="url(#techGradient)" opacity="0.9"/>
+                    
+                    <!-- Nodos diagonales más pequeños -->
+                    <circle cx="11" cy="11" r="1.5" fill="#60a5fa" opacity="0.6"/>
+                    <circle cx="39" cy="11" r="1.5" fill="#818cf8" opacity="0.6"/>
+                    <circle cx="11" cy="39" r="1.5" fill="#a78bfa" opacity="0.6"/>
+                    <circle cx="39" cy="39" r="1.5" fill="#60a5fa" opacity="0.6"/>
+                    
+                    <!-- Pulsos de datos (pequeños puntos) -->
+                    <circle cx="25" cy="12" r="0.8" fill="white" opacity="0.8">
+                        <animate attributeName="cy" values="5;20;5" dur="3s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="33" cy="25" r="0.8" fill="white" opacity="0.8">
+                        <animate attributeName="cx" values="30;45;30" dur="3.5s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0;1;0" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <span class="letter letter-n">n</span><span class="letter letter-e">e</span><span class="letter letter-u">u</span><span class="letter letter-r">r</span><span class="letter letter-o">o</span><span class="letter letter-n2">n</span><span class="letter letter-a1">a</span><span class="letter letter-t">t</span><span class="letter letter-i">i</span><span class="letter letter-c">c</span><span class="letter letter-a2">a</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contador regresivo -->
+    <div class="countdown-container">
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Segundos</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mensaje -->
+    <div class="message">
+        <h1>Próximamente</h1>
+        <p>
+            Navegando hacia el futuro de la inteligencia artificial y el análisis de datos. 
+            Prepárate para una experiencia innovadora que transformará tu manera de trabajar con tecnología.
+        </p>
+    </div>
+    
+    <!-- Video Section -->
+    <div class="video-section">
+        <div class="video-container">
+            <!-- Opción 1: Video de YouTube/Vimeo -->
+            <iframe 
+                src="https://www.youtube.com/embed/TU_VIDEO_ID" 
+                title="Neuronatica - Innovación en IA"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
             
-            function animateNumber(id, value) {
-                const element = document.getElementById(id);
-                const current = parseInt(element.textContent);
-                const formatted = String(value).padStart(2, '0');
+            <!-- Opción 2: Video local (comentado, descomenta si usas archivo local) -->
+            <!--
+            <video controls poster="thumbnail.jpg" preload="metadata">
+                <source src="neuronatica-video.mp4" type="video/mp4">
+                <source src="neuronatica-video.webm" type="video/webm">
+                Tu navegador no soporta el elemento video.
+            </video>
+            -->
+            
+            <!-- Play button overlay -->
+            <div class="play-overlay">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <circle cx="40" cy="40" r="40" fill="rgba(96, 165, 250, 0.9)"/>
+                    <polygon points="32,24 56,40 32,56" fill="white"/>
+                </svg>
+            </div>
+        </div>
+        <p class="video-caption">Descubre cómo transformamos datos en decisiones inteligentes</p>
+    </div>
+    
+    <!-- Preview de secciones -->
+    <div class="sections-preview">
+        <h2 class="sections-title">Descubre lo que viene</h2>
+        <div class="sections-list">
+            <div class="section-item">Nuestro Propósito</div>
+            <div class="section-item">Productos</div>
+            <div class="section-item">Investigación</div>
+            <div class="section-item">Contacto</div>
+        </div>
+    </div>
+    
+    <!-- Loading bar -->
+    <div class="loading-bar"></div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    © <span class="year">2025</span> Neuronatica. Innovación impulsada por datos.
+</div>
+
+<script>
+    // Generar partículas
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+    
+    // Configuración del contador regresivo REAL - 1 de Noviembre 2025
+    function initCountdown() {
+        // Fecha objetivo fija: 1 de noviembre de 2025, 00:00:00
+        const targetDate = new Date('2025-11-01T00:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
                 
-                if (current !== value) {
-                    element.style.transform = 'scale(1.2)';
-                    setTimeout(() => {
-                        element.textContent = formatted;
-                        element.style.transform = 'scale(1)';
-                    }, 200);
-                }
+                // Actualizar con animación suave
+                animateNumber('days', days);
+                animateNumber('hours', hours);
+                animateNumber('minutes', minutes);
+                animateNumber('seconds', seconds);
+            } else {
+                // Si el contador llega a cero
+                document.querySelector('.countdown-container').innerHTML = 
+                    '<h2 style="color: #60a5fa; font-size: 36px;">¡Ya estamos en línea! 🚀</h2>';
             }
-            
-            // Actualizar inmediatamente y luego cada segundo
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
         }
         
-        // Efecto parallax mejorado
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 2;
-            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        function animateNumber(id, value) {
+            const element = document.getElementById(id);
+            const current = parseInt(element.textContent);
+            const formatted = String(value).padStart(2, '0');
             
-            const logoContainer = document.querySelector('.logo-container');
-            if (logoContainer) {
-                logoContainer.style.transform = 
-                    `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateZ(20px)`;
-            }
-        });
-        
-        // Mostrar tooltip al hacer hover en las secciones
-        document.querySelectorAll('.section-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Crear efecto de shake cuando intentan hacer clic
-                this.style.animation = 'shake 0.5s';
+            if (current !== value) {
+                element.style.transform = 'scale(1.2)';
                 setTimeout(() => {
-                    this.style.animation = '';
-                }, 500);
-            });
-        });
-        
-        // Animación de shake
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                25% { transform: translateX(-5px); }
-                75% { transform: translateX(5px); }
+                    element.textContent = formatted;
+                    element.style.transform = 'scale(1)';
+                }, 200);
             }
-        `;
-        document.head.appendChild(style);
+        }
         
-        // Inicializar cuando la página cargue
-        window.addEventListener('load', () => {
-            createParticles();
-            initCountdown();
+        // Actualizar inmediatamente y luego cada segundo
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+    
+    // Efecto parallax mejorado
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        
+        const logoContainer = document.querySelector('.logo-container');
+        if (logoContainer) {
+            logoContainer.style.transform = 
+                `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateZ(20px)`;
+        }
+    });
+    
+    // Mostrar tooltip al hacer hover en las secciones
+    document.querySelectorAll('.section-item').forEach(item => {
+        item.addEventListener('click', function() {
+            // Crear efecto de shake cuando intentan hacer clic
+            this.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 500);
         });
-    </script>
+    });
+    
+    // Animación de shake
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Inicializar cuando la página cargue
+    window.addEventListener('load', () => {
+        createParticles();
+        initCountdown();
+    });
+</script>
+```
+
 </body>
 </html>
